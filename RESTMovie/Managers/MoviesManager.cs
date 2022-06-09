@@ -50,5 +50,18 @@ namespace RESTMovie.Managers
             _movies.Add(addMovie);
             return addMovie;
         }
+        //Sletter Movie fra listen med det specifikke Id
+        //derefter returnere den null, af ingen movies har det id
+        public Movie DeleteMovie(int id)
+        {
+            Movie deleteMovie = _movies.Find(m => m.Id == id);
+            if (deleteMovie == null)
+            {
+                return null;
+            }
+            //ellers slet en movie fra listen
+            _movies.Remove(deleteMovie);
+            return deleteMovie;
+        }
     }
 }
