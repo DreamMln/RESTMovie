@@ -7,17 +7,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace RESTMovie.Controllers
 {
+    /// <summary>
+    ///  RestController er brugt til restful web services 
+    ///  med de her @RestController annotation. 
+    ///  De her annotation er brugt til class level og
+    ///  tillader classen at håndtere de requests der kommer fra en client (JS).
+    ///  
+    ///  RestControlleren returnere objekter og data direkte skrevet som et 
+    ///  http response, i JSON-format.
+    /// </summary>
+
+    //route - controllers bruger Routing til at matche
+    // URL'er for indkommende requests, og actions.
     [Route("api/[controller]")]
+    //gør den til en apicontroller
     [ApiController]
     public class MoviesController : ControllerBase
     {
         //reference til manager class
         //instans
-        //opretter objektet 
+        //opretter objektet - for at anvende metoderne
         private MoviesManager _manager = new MoviesManager();
 
         // GET: api/<MoviesController>

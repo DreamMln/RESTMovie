@@ -12,8 +12,14 @@ namespace RESTMovie.Managers
         /// hvis vi ikke kan oprette den statiske liste
         /// så kan vi lave en constructor og initialisere listen
         /// i. Det kan være en løsning
+        /// 
+        /// FILTER -  filtrering/sortering på klient, fordi data altid bliver 
+        /// hentet til klienten, når appen startes. 
+        /// Men hvis klienten i stedet altid skal vælge at hente data, 
+        /// kan det give bedre mening at lave 
+        /// sortering/filtrering på server-siden
         /// </summary>
-        
+
         private static int _nextId = 1;
         private static List<Movie> _movies = new List<Movie>
         {
@@ -32,7 +38,7 @@ namespace RESTMovie.Managers
         {
            return _movies.Find(m => m.Id == id);
         }
-        //filter
+        //filter - her på serversiden
         public IEnumerable<Movie> GetFilter(int filter)
         {
             IEnumerable<Movie> result = _movies.Where(x => x.LengthInMinutes < filter);
