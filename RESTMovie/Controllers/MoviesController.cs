@@ -62,10 +62,11 @@ namespace RESTMovie.Controllers
         }
 
         // GET api/<MoviesController>/5
+
         //filter - lengthinminutes
-        //Is able to filter the result by either:
-        //Name containing the substring (case-insensitive)
         //from query - binding
+        //[FromQuery] - henter fra query string - fra URL,
+        //url.com//api/items/anders - OPTIONAL
         [HttpGet("search")]
         public IEnumerable<Movie> GetF([FromQuery] int lengthInMinutes)
         {
@@ -74,6 +75,8 @@ namespace RESTMovie.Controllers
 
 
         // POST api/<MoviesController>
+        //FromBody : det der står inde i body(http header) - DATA
+        //henter/adder/eller binder det
         [ProducesResponseType(StatusCodes.Status201Created)]
         [HttpPost]
         public ActionResult<Movie> Post([FromBody] Movie newMovie)
@@ -83,7 +86,8 @@ namespace RESTMovie.Controllers
             {
                 return null;
             }
-            //ellers så bliver der tilføjet/created en Movie til listen
+            //ellers så fortæller den at her kan du hente den movie/2
+            //viser vejen, her er url'en:
             return Created($"/api/movies/{result.Id}", result);
         }
 
